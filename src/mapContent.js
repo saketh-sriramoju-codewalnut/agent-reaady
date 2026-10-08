@@ -1,0 +1,82 @@
+// Transcribed from the user's "What Makes a Repository Agent-Ready?" image.
+// Stages are a left-to-right sequence. Foundations support all four stages.
+export const mapContent = {
+  title: 'What Makes a Repository Agent-Ready?',
+  subtitle: 'Ten areas to prepare your repositories for agents, with clear guidance, useful feedback and reliable delivery workflows.',
+  stages: [
+    {
+      id: 'set-up-and-find', title: 'Set up and find', tone: 'blue',
+      tiles: [
+        {
+          id: 'local-setup', number: '01', title: 'Local setup',
+          bullets: ['Prerequisites', 'Configuration', 'Startup commands'],
+          description: 'Helps the agent run and test changes locally.',
+        },
+        {
+          id: 'finding-the-right-files', number: '02', title: 'Finding the right files',
+          bullets: ['AGENTS.md as a router', 'Indexed docs', 'Graphify code maps'],
+          description: 'Reach the right context with less searching.',
+        },
+      ],
+    },
+    {
+      id: 'understand-the-work', title: 'Understand the work', tone: 'green',
+      tiles: [
+        {
+          id: 'architecture-and-conventions', number: '03', title: 'Architecture and conventions',
+          bullets: ['Decision records (ADRs)', 'Coding standards', 'A reference implementation'],
+          description: 'Follow the team’s technology choices and approach.',
+        },
+        {
+          id: 'domain-knowledge', number: '04', title: 'Domain knowledge',
+          bullets: ['A domain glossary', 'Business rules', 'Workflows'],
+          description: 'Reduce guesswork about what a requirement means.',
+        },
+      ],
+    },
+    {
+      id: 'check-the-change', title: 'Check the change', tone: 'blue',
+      tiles: [
+        {
+          id: 'code-quality-checks', number: '05', title: 'Code quality checks',
+          bullets: ['Lint, format and type checks', 'SonarQube quality gate', 'Code and dependency security scans'],
+          description: 'Find, fix and recheck issues as part of every change.',
+        },
+        {
+          id: 'tests', number: '06', title: 'Tests',
+          bullets: ['Unit tests', 'Contract tests', 'End-to-end tests'],
+          description: 'Check that changes work and existing behaviour still holds.',
+        },
+      ],
+    },
+    {
+      id: 'deliver-and-operate', title: 'Deliver and operate', tone: 'green',
+      tiles: [
+        {
+          id: 'pull-request-workflow', number: '07', title: 'Pull request workflow',
+          bullets: ['Branch and commit rules', 'A PR template', 'Evidence in the PR: tests, screenshots and diagrams', 'Release workflows'],
+          description: 'Build merge confidence when the PR is submitted.',
+        },
+        {
+          id: 'observability', number: '08', title: 'Observability',
+          bullets: ['Logs', 'Metrics', 'Traces'],
+          description: 'Investigate the health of the production system.',
+        },
+      ],
+    },
+  ],
+  foundations: {
+    title: 'Foundations: support every stage',
+    tiles: [
+      {
+        id: 'agent-skills', number: '09', title: 'Agent skills', tone: 'purple',
+        bullets: ['Spec and design workflows', 'Subagents for focused tasks', 'Development and debugging workflows', 'Review and pull request workflows'],
+      },
+      {
+        id: 'guardrails', number: '10', title: 'Guardrails', tone: 'amber',
+        bullets: ['Deny and ask rules', 'Pre-tool hooks', 'Protected files and sensitive resources', 'Auto mode'],
+      },
+    ],
+  },
+  note: 'Use this as a starting point. Adapt it to your team and application.',
+}
