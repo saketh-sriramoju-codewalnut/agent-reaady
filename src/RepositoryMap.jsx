@@ -9,14 +9,16 @@ function Icon({ name = 'flow', ...props }) {
 
 function Tile({ tile, open, onToggle, foundation = false }) {
   return <article className={`tile ${tile.tone ? `tone-${tile.tone}` : ''} ${open ? 'is-expanded' : ''} ${foundation ? 'foundation-tile' : ''}`}>
+    <div className="tile-core">
     <h4><button className="tile-trigger" id={`trigger-${tile.id}`} aria-expanded={open} aria-controls={`content-${tile.id}`} onClick={onToggle}>
-      <span className="tile-number">{tile.number}</span><span className="tile-title">{tile.title}</span><span className="tile-toggle" aria-hidden="true">{open ? '−' : '+'}</span>
+      <span className="tile-number">{tile.number}</span><span className="tile-title">{tile.title}</span><span className="tile-toggle" aria-hidden="true"><span /><span /></span>
     </button></h4>
     <div id={`content-${tile.id}`} className="tile-content" role="region" aria-labelledby={`trigger-${tile.id}`} hidden={!open}>
       <div className="tile-content-inner">
         <ul className="tile-bullets">{tile.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
         {tile.description && <p className="tile-description">{tile.description}</p>}
       </div>
+    </div>
     </div>
   </article>
 }
@@ -43,28 +45,26 @@ export default function RepositoryMap() {
     <a className="skip-link" href="#map">Skip to the map</a>
     <header className="site-header"><div className="header-inner">
       <a href="#home" className="brand" aria-label="Agent-ready home"><span className="brand-icon"><Icon /></span>agent<span className="brand-light">ready</span><span className="brand-dot">.</span></a>
-      <a href="#map" className="header-map-link">Explore the map <Icon name="arrow" /></a>
+      <a href="#map" className="header-map-link">View map <Icon name="arrow" /></a>
     </div></header>
 
     <main id="home">
       <section className="hero" aria-labelledby="page-title">
-        <div className="hero-glow" aria-hidden="true" />
-        <p className="eyebrow"><span /> REPOSITORY READINESS MAP</p>
-        <h1 id="page-title">What Makes a Repository<br /><em>Agent-Ready?</em></h1>
+        <p className="eyebrow"><Icon /> An interactive repository map</p>
+        <h1 id="page-title">{mapContent.title}</h1>
         <p className="hero-description">{mapContent.subtitle}</p>
-        <a className="explore-button" href="#map">Explore the map <Icon name="arrow" /></a>
-        <div className="hero-meta"><span>4 stages</span><i /><span>10 areas</span><i /><span>One connected workflow</span></div>
+        <a className="explore-button" href="#map">Explore the map <span className="button-icon"><Icon name="arrow" /></span></a>
       </section>
 
       <section className="map-section" id="map" aria-labelledby="map-title">
-        <div className="map-topbar"><div><p className="section-kicker">// THE WORKFLOW</p><h2 id="map-title">From setup to delivery<span>.</span></h2></div>
-          <div className="map-controls"><span>Click a tile to explore</span><button onClick={() => setExpanded(allOpen ? new Set() : new Set(allTiles.map((tile) => tile.id)))}><Icon name={allOpen ? 'collapse' : 'expand'} />{allOpen ? 'Collapse all' : 'Expand all'}</button></div>
+        <div className="map-topbar"><div><h2 id="map-title">From setup to delivery.</h2><p className="map-instruction">Follow the stages. Open a tile for the details.</p></div>
+          <div className="map-controls"><button onClick={() => setExpanded(allOpen ? new Set() : new Set(allTiles.map((tile) => tile.id)))}><Icon name={allOpen ? 'collapse' : 'expand'} />{allOpen ? 'Collapse all' : 'Expand all'}</button></div>
         </div>
 
         <ol className="stage-flow" aria-label="Repository preparation stages in order">
           {mapContent.stages.map((stage, index) => <li key={stage.id} className={`stage tone-${stage.tone}`}>
             <section aria-labelledby={`heading-${stage.id}`}>
-              <h3 className="stage-heading" id={`heading-${stage.id}`}><span className="stage-step" aria-label={`Stage ${index + 1}`}>{String(index + 1).padStart(2, '0')}</span>{stage.title}</h3>
+              <h3 className="stage-heading" id={`heading-${stage.id}`}>{stage.title}</h3>
               <div className="stage-tiles">{stage.tiles.map((tile) => renderTile(tile))}</div>
             </section>
             {index < mapContent.stages.length - 1 && <span className="stage-arrow" aria-hidden="true"><Icon name="arrow" /></span>}
@@ -77,7 +77,7 @@ export default function RepositoryMap() {
           <div className="foundation-tiles">{mapContent.foundations.tiles.map((tile) => renderTile(tile, true))}</div>
         </section>
 
-        <div className="map-bottom"><span className="legend"><i className="legend-flow" />Workflow stages</span><span className="legend"><i className="legend-foundation" />Foundations across every stage</span><p>{expanded.size} of 10 tiles expanded</p></div>
+        <div className="map-bottom"><span className="legend"><i className="legend-flow" />Workflow stages</span><span className="legend"><i className="legend-foundation" />Foundations across every stage</span><p aria-live="polite" aria-atomic="true">{expanded.size} of 10 tiles expanded</p></div>
       </section>
     </main>
     <footer><Icon /><p>{mapContent.note}</p><a href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
