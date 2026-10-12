@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent-ready Frontend Design"
+  short_description: "Readable typography and clear map hierarchy"
+  default_prompt: "Use $agent-ready-frontend-design to improve this map's layout and readability while preserving its source flow."

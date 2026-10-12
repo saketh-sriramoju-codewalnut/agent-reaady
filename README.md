@@ -39,3 +39,7 @@ Requires a Node version supported by Vite 7 (20.19+ or 22.12+). Output is writte
 - `src/App.jsx`: application entry component.
 - `src/RepositoryMap.jsx`: workflow, foundations, and expansion controls.
 - `src/repository-map.css`: design, connectors, and responsive layouts.
+
+## Project skills
+
+Reusable coding-agent instructions and records of their actual use are documented in [Project skills](docs/project-skills.md). Each skill is reviewed in its own pull request.
