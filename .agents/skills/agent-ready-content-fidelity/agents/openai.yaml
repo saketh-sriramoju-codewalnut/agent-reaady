@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent-ready Content Fidelity"
+  short_description: "Verify exact image content and stage membership"
+  default_prompt: "Use $agent-ready-content-fidelity to check the map's content and flow against the reviewed source."
