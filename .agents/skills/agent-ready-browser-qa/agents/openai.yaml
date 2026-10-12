@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent-ready Browser QA"
+  short_description: "Check responsive flow and expansion in the browser"
+  default_prompt: "Use $agent-ready-browser-qa to verify the map's responsiveness, tile controls, and keyboard behavior."
