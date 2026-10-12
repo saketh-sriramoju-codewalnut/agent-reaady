@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent-ready Visual Polish"
+  short_description: "Refine nested surfaces and restrained motion"
+  default_prompt: "Use $agent-ready-visual-polish to refine the map's card surfaces and controls without reducing readability."
